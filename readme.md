@@ -11,3 +11,9 @@
 5. provide the store in index.js for <App/>
    6.use sstore data and dispatch actions
    7.useDispatch hook to make actions
+
+   (npm rm redux)
+
+6. replace redux with @reduxjs/toolkit
+   9.create Slice with reducers
+7. configure store

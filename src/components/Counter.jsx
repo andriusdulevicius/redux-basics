@@ -3,7 +3,10 @@ import classes from './Counter.module.css';
 
 const Counter = () => {
   const counter = useSelector((state) => state.counter); //sukuriamas subscribe automatiskai
-  const toggleCounterHandler = () => {};
+  const showCounter = useSelector((state) => state.showCounter); //sukuriamas subscribe automatiskai
+  const toggleCounterHandler = () => {
+    dispatch({ type: 'TOGGLE' });
+  };
 
   const dispatch = useDispatch();
   const incrementHandler = () => {
@@ -20,12 +23,16 @@ const Counter = () => {
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>-- {counter} --</div>
-      <div>
-        <button onClick={incrementHandler}>UP</button>
-        <button onClick={increaseHandler}>UP by ... </button>
-        <button onClick={decrementHandler}>DOWN</button>
-      </div>
+      {showCounter && (
+        <>
+          <div className={classes.value}>-- {counter} --</div>
+          <div>
+            <button onClick={incrementHandler}>UP</button>
+            <button onClick={increaseHandler}>UP by ... </button>
+            <button onClick={decrementHandler}>DOWN</button>
+          </div>
+        </>
+      )}
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
   );
