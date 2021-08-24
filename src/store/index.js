@@ -1,48 +1,11 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
-// import { createStore } from 'redux';
-const initialCounterState = { counter: 0, showCounter: true };
-// naudojant toolkit mes kuriam createSlice
-
-// Auth setup
-const authSlice = createSlice({
-  name: 'authentitication',
-  initialState: { isAuthenticated: false },
-  reducers: {
-    login(state) {
-      state.isAuthenticated = true;
-    },
-    logout(state) {
-      state.isAuthenticated = false;
-    },
-  },
-});
-
-const counterSlice = createSlice({
-  name: 'counter',
-  initialState: initialCounterState,
-  reducers: {
-    up(state) {
-      // immer paketo pagalba galima rasyti tokiu budu, tada nereikia perdarineti objektu, yra automatiskai perdaroma state nemutuojancia sintakse
-      state.counter++;
-    },
-    down(state) {
-      state.counter--;
-    },
-    increase(state, action) {
-      state.counter = state.counter + action.payload;
-    },
-    toggle(state) {
-      state.showCounter = !state.showCounter;
-    },
-  },
-});
+import { configureStore } from '@reduxjs/toolkit';
+import { counterSlice } from './counterRedux';
+import { authSlice } from './authRedux';
 
 const store = configureStore({
   reducer: { counter: counterSlice.reducer, auth: authSlice.reducer },
 });
 
-export const authActions = authSlice.actions;
-export const counterActions = counterSlice.actions;
 export default store;
 
 // reducer f-ja paprasto redux(core) budu
