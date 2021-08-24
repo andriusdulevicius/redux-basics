@@ -4,6 +4,8 @@ import { authActions } from '../store/authRedux';
 
 const Header = () => {
   const auth = useSelector((state) => state.auth.isAuthenticated);
+  const allUsers = useSelector((state) => state.auth.users);
+  const loggedInUser = useSelector((state) => state.auth.loggedInUser);
   const dispatch = useDispatch();
 
   const toggleLogout = () => {
@@ -25,6 +27,9 @@ const Header = () => {
               </li>
               <li>
                 <button onClick={toggleLogout}>Logout</button>
+              </li>
+              <li>
+                <span>Logged in as : {loggedInUser.email}</span>
               </li>
             </>
           )}
