@@ -3,8 +3,8 @@ import classes from './Counter.module.css';
 import { counterActions } from './../store/index';
 
 const Counter = () => {
-  const counter = useSelector((state) => state.counter); //sukuriamas subscribe automatiskai
-  const showCounter = useSelector((state) => state.showCounter); //sukuriamas subscribe automatiskai
+  const counter = useSelector((state) => state.counter.counter); //sukuriamas subscribe automatiskai
+  const showCounter = useSelector((state) => state.counter.showCounter); //sukuriamas subscribe automatiskai
   const toggleCounterHandler = () => {
     // dispatch({ type: 'TOGGLE' });
     dispatch(counterActions.toggle());
