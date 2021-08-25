@@ -54,7 +54,6 @@ const Auth = () => {
                   value={repeatPassword}
                 />
               </div>
-              <button onClick={submitHandler}> Submit </button>{' '}
             </>
           )}
           <button onClick={loginHandler}>Login</button>
@@ -66,6 +65,7 @@ const Auth = () => {
           >
             Sign In
           </button>
+          {signIn && <button onClick={submitHandler}> Submit </button>}
           {err && (
             <span style={{ color: 'red' }}>
               Sitokio vartotojo nera, bandykite dar karta, arba sukurkite nauja vartotoja.
